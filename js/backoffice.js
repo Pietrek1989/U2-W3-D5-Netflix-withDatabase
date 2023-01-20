@@ -78,14 +78,13 @@ const editEvent = async (id) => {
     });
     let data = await res.json();
 
-    if (res.ok) {
-      await console.log(data);
-      await getMovieToEdit(data);
-
-      document
-        .getElementById("edit-button")
-        .addEventListener("click", editFinal(data));
-    }
+    await console.log(data);
+    await getMovieToEdit(data);
+    let buttonContainer = document.getElementById("buttons");
+    buttonContainer.innerHTML += `<button type="submit" class="btn btn-primary" onclick='editFinal("${data._id}")' >EDIT</button>`;
+    // document
+    //   .getElementById("edit-button")
+    //   .addEventListener("click", editFinal(data));
   } catch (error) {
     console.log(error);
   }
@@ -93,7 +92,6 @@ const editEvent = async (id) => {
 
 const getMovieToEdit = async (data) => {
   try {
-    await console.log(data);
     let { name, description, imageUrl, category } = await data;
     document.querySelector("#Name").value = name;
     document.querySelector("#Description").value = description;
@@ -103,9 +101,12 @@ const getMovieToEdit = async (data) => {
     console.log(erorr);
   }
 };
-const editFinal = async (data) => {
+
+const editFinal = async (id) => {
+  console.log(id);
   try {
     console.log("runing");
+    console.log(id);
     const editedEvent = {
       name: document.querySelector("#Name").value,
       description: document.querySelector("#Description").value,
@@ -113,7 +114,7 @@ const editFinal = async (data) => {
       imageUrl: document.querySelector("#Image").value,
     };
     console.log(id);
-    let res = await fetch(url + "/" + data._id, {
+    let res = await fetch(url + "/" + id, {
       method: "PUT",
       headers,
       body: JSON.stringify(editedEvent),
