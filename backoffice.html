@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+    crossorigin="anonymous"
+  />
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+/>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">
+          Bootstrap
+        </a>
+      </nav>
+      <div id="error-container">
+    </div>
+      </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Name</label>
+        <input type="text" class="form-control" id="Name">
+        </div>
+
+        <div class="form-group">
+          <div class="form-group">
+              <label for="exampleFormControlInput1">Description</label>
+              <input type="text" class="form-control" id="Description">
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Category</label>
+          <input type="text" class="form-control" id="Category">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Image</label>
+            <input type="text" class="form-control" id="Image">
+          </div>
+        <button type="submit" class="btn btn-primary" onclick="postMovies(); return false" >Submit</button>
+        <button type="submit" class="btn btn-primary" id="edit-button">EDIT</button>
+
+            <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option id="genre-action">action</option>
+              <option id="genre-horror">horror</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" onclick="editMovies(); return false">Get movies</button>
+          </div>
+          <div>
+            <ul id="list-movies">
+
+            </ul>
+          </div>
+
+    <script src="js/backoffice.js"></script>
+</body>
+</html>
