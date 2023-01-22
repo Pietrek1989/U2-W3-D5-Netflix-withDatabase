@@ -313,3 +313,27 @@ h1 {
 .bi-paypal {
   color: black;
 }
+
+/* Backoffice */
+
+#backoffice .btn {
+  font-size: 0.8rem;
+}
+
+.btn-get-movies {
+  width: 200px;;
+}
+.img-small-cover {
+  height: 100px;
+  width: 75px;
+}
+#list-movies button {
+  height: 20%;
+}
+#list-movies {
+  display: flex;
+  justify-content: space-between;
+}
+#body-ation .img-fluid {
+  height: 35vh;
+}

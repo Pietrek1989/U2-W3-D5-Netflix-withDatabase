@@ -1,7 +1,5 @@
 const url = "https://striveschool-api.herokuapp.com/api/movies";
-const params = new URLSearchParams(location.search);
-const id = params.get("id");
-console.log(id);
+
 const headers = new Headers({
   Authorization:
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M5MzM4ZWU3MzczODAwMTUzNzQzNzciLCJpYXQiOjE2NzQyMDU0OTcsImV4cCI6MTY3NTQxNTA5N30.46ZlnsSty_g9npWTXjIqWXh52mpZtcMP9R3BRtZARWw",
@@ -49,9 +47,16 @@ const renderGenre = (movies) => {
   let container = document.getElementById("list-movies");
   movies.forEach((singleMovie) => {
     container.innerHTML += `
-    <li id="${singleMovie._id}"> NAME: ${singleMovie.name}><button onclick='editEvent("${singleMovie._id}")'>Edit id:${singleMovie._id}</button> 
-    </li>
-        <li><button onclick='deleteEvent("${singleMovie._id}")'>remove id:${singleMovie._id}</button></li>`;
+    <div class="d-flex justify-content-between flex-row">
+      <div class="d-flex justify-content-between flex-row align-items-center w-50">
+        <li id="${singleMovie._id}" class="d-flex justify-content-between edit-list">${singleMovie.name}</li>
+        <img class="img-small-cover" src="${singleMovie.imageUrl}">
+      </div>
+      <div class="d-flex justify-content-around w-50">
+        <button class="btn-success" onclick='editEvent("${singleMovie._id}")'>Edit id:${singleMovie._id}</button> 
+       <button class="btn-danger" onclick='deleteEvent("${singleMovie._id}")'>remove id:${singleMovie._id}</button></li>
+       </div>
+      </div>`;
   });
 };
 
@@ -82,9 +87,6 @@ const editEvent = async (id) => {
     await getMovieToEdit(data);
     let buttonContainer = document.getElementById("buttons");
     buttonContainer.innerHTML += `<button type="submit" class="btn btn-primary" onclick='editFinal("${data._id}")' >EDIT</button>`;
-    // document
-    //   .getElementById("edit-button")
-    //   .addEventListener("click", editFinal(data));
   } catch (error) {
     console.log(error);
   }
